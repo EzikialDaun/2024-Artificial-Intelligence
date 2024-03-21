@@ -25,7 +25,7 @@ class Node:
 
     # 퍼즐 디스플레이
     def display(self):
-        print(f'last operation: {list_op[self.operation]}')
+        print(f'Last operation: {list_op[self.operation]}')
         for i in range(size_row):
             temp: list[int] = []
             for j in range(size_col):
