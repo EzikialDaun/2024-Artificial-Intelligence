@@ -11,7 +11,7 @@ op_down = 3
 op_right = 4
 # 연산자 이름 리스트
 list_op: list[str] = [
-    "ROOT", "UP", "LEFT", "DOWN", "RIGHT"
+    "NONE(ROOT)", "UP", "LEFT", "DOWN", "RIGHT"
 ]
 
 
@@ -102,7 +102,7 @@ def a_star_search(state_init: list[int], state_obj: list[int]):
     while True:
         # 확인이 필요한 리스트가 더 없으면 순회를 종료한다.
         if not list_opened:
-            print("solution not found.\n\n")
+            print("Solution not found.\n\n")
             break
         # opened 리스트의 노드들을 f(n) 평가한다.
         list_f: list[int] = []
@@ -114,14 +114,14 @@ def a_star_search(state_init: list[int], state_obj: list[int]):
         selected = list_opened[index_min]
         # 선택된 노드가 이전에 만들어진 노드면
         if selected.score_g != score_g:
-            print("back to parent.")
+            print("Return to previous level.")
         # 노드의 상태를 이차원 배열로 표시한다.
         selected.display()
         print(f"f(n) = {min(list_f)} = g(n) + h(n) = {selected.score_g} + {min(list_f) - selected.score_g}")
         print()
         # 현재 노드가 목표 노드와 같으면 순회를 종료한다.
         if selected.state == state_obj:
-            print("solution found.\n\n")
+            print("Solution found.\n\n")
             break
         # 같지 않으면 g(n) 값을 증가시킨다.
         score_g += 1
